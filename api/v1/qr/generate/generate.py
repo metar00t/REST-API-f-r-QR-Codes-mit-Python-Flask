@@ -1,6 +1,5 @@
 from flask import Flask, request, render_template
 import qrcode
-from qrcode.image.styles.moduledrawers.svg import SvgCircleDrawer
 import qrcode.image.svg
 
 app = Flask(__name__)
@@ -12,7 +11,6 @@ class QrCode:
         self.text = text
     # Methode generate() definiert
     def generate(self):
-        # TODO Code zum Styling der QR-Codes anpassen
         img = qrcode.make(self.text, image_factory=qrcode.image.svg.SvgPathImage)
         self.text = img.to_string(encoding='unicode')
         # Gibt die SVG (Vektorgrafik) als String zurück
